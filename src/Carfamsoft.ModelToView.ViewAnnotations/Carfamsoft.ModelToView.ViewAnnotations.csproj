@@ -22,11 +22,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\hp\source\repos\Carfamsoft.ModelToView\src\Carfamsoft.ModelToView.ViewAnnotations\Carfamsoft.ModelToView.ViewAnnotations.xml</DocumentationFile>
+    <DocumentationFile>.\Carfamsoft.ModelToView.ViewAnnotations.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\hp\source\repos\Carfamsoft.ModelToView\src\Carfamsoft.ModelToView.ViewAnnotations\bin\Debug\Carfamsoft.ModelToView.ViewAnnotations.xml</DocumentationFile>
+    <DocumentationFile>.\Carfamsoft.ModelToView.ViewAnnotations.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
