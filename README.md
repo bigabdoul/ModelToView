@@ -27,6 +27,10 @@ They show you how to do custom view model rendering.
 
 `Install-Package Carfamsoft.ModelToView.Mvc`
 
+If you get errors like:
+`The type 'Type' is defined in an assembly that is not referenced. You must add a reference to assembly 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'`
+You may resolve this following this issue: https://github.com/dotnet/standard/issues/542
+
 ### An AngularJS sample
 
 In a Razor view:
