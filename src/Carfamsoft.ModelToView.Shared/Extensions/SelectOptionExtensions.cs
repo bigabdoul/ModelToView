@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Carfamsoft.ModelToView.Shared
+namespace Carfamsoft.ModelToView.Shared.Extensions
 {
     /// <summary>
     /// Provides extension methods for instances of the <see cref="SelectOption"/> and <see cref="SelectOptionList"/> classes.

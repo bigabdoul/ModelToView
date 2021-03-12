@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Carfamsoft.ModelToView.Shared
+namespace Carfamsoft.ModelToView.Shared.Extensions
 {
     /// <summary>
     /// Contains extension methods for an instance of the <see cref="string"/> class.

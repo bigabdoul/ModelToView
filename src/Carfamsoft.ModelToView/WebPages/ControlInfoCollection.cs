@@ -1,4 +1,4 @@
-﻿using Carfamsoft.ModelToView.Shared;
+﻿using Carfamsoft.ModelToView.Shared.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Resources;
