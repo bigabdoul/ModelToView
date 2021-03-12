@@ -4,11 +4,30 @@ Generates localizable HTML form elements using custom attributes annotated view 
 
 ## Getting started
 
+### Cloning the repository
+
+`git clone https://github.com/bigabdoul/ModelToView.git`
+
+Open the solution file in `.\Carfamsoft.ModelToView.sln`. In Visual Studio, make
+sure that the sample project in `.\src\Samples\Web\Carfamsoft.ModelToView.Samples.Web.AutoRazorViews`
+is set as the startup project. Make sure to clean and rebuild the solution.
+Press `Ctrl+F5` to launch the project. Navigate to the URL `/Account/Register`
+and try out different views. Have fun exploring these source files:
+
+- `/Views/Account/Login.cshtml`,
+- `/Views/Account/Register.cshtml`,
+- `/Views/Account/Update.cshtml`,
+- `/Views/Shared/_AutoEditView.cshtml`
+- `/Views/Shared/_AutoInputView.cshtml`
+- `/Views/Shared/_AutoInputGroupView.cshtml`
+
+They show you how to do custom view model rendering.
+
 ### Using NuGet
 
 `Install-Package Carfamsoft.ModelToView.Mvc`
 
-#### An AngularJS sample
+### An AngularJS sample
 
 In a Razor view:
 
@@ -146,25 +165,7 @@ namespace MyApp.Web.Models
 }
 ```
 
-## Cloning the repository
-
-`git clone https://github.com/bigabdoul/ModelToView.git`
-
-Open the solution file in `.\Carfamsoft.ModelToView.sln`. In Visual Studio, make
-sure that the sample project in `.\src\Samples\Web\Carfamsoft.ModelToView.Samples.Web.AutoRazorViews`
-is set as the startup project. Press `Ctrl+F5` to launch the project. Navigate
-to the URL `/Account/Register` and try out different views. Have fun exploring
-these source files:
-
-- `/Views/Account/Register.cshtml`,
-- `/Views/Account/Login.cshtml`,
-- `/Views/Shared/_AutoEditView.cshtml`
-- `/Views/Shared/_AutoInputView.cshtml`
-- `/Views/Shared/_AutoInputGroupView.cshtml`
-
-They show you how to do custom view model rendering.
-
-## Sample view model annotations
+### Sample view model annotations
 
 ```C#
 using Carfamsoft.ModelToView.Testing.Resources;
@@ -220,7 +221,7 @@ namespace Carfamsoft.ModelToView.Testing
 }
 ```
 
-## Sample unit test
+### Sample unit test
 
 ```C#
 using Carfamsoft.ModelToView.Mvc;
