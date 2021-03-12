@@ -1,0 +1,51 @@
+﻿@model AutoInputMetadataBag
+
+@{
+    var objVm = Model.ViewModel;
+    if (objVm.ExtractMetadata(out var groups))
+    {
+        foreach (var group in groups)
+        {
+            var items = group.Items.Where(g => !g.Attribute.IsIgnored()).ToArray();
+
+            // first render all hidden inputs
+            foreach (var item in items.Where(i => i.Attribute.Is("hidden")))
+            {
+                <input type="hidden" name="@item.PropertyInfo.Name" value="@item.GetValue(objVm)" />
+            }
+
+            items = items.Where(i => !i.Attribute.Is("hidden")).ToArray();
+
+            if (items.Length > 0)
+            {
+                // now display the other elements
+                <fieldset class="display-group">
+                    @if (group.ShowName)
+                    {
+                        <legend>@group.Name</legend>
+                    }
+                    <div class="display-group-body @group.CssClass">
+                        @foreach (var data in items)
+                        {
+                            if (data.Attribute.Is("hidden"))
+                            {
+                                <input type="hidden" name="@data.PropertyInfo.Name" value="@data.GetValue(objVm)" />
+                            }
+                            else
+                            {
+                                Model.Metadata = data;
+                                <div class="@data.Attribute.ColumnCssClass">
+                                    @Html.Partial("_AutoInputView", Model)
+                                </div>
+                            }
+                        }
+                    </div>
+                </fieldset>
+            }
+        }
+    }
+    else
+    {
+        throw new InvalidOperationException("Could not extract metada from the specified model.");
+    }
+}

@@ -1,0 +1,20 @@
+﻿@model VerifyPhoneNumberViewModel
+@{
+    ViewBag.Title = "Verify Phone Number";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<form action="@Url.Action("VerifyPhoneNumber", "Manage")" method="post" class="form-horizontal" role="form">
+    @Html.AntiForgeryToken()
+    <h4>Enter verification code</h4>
+    <h5>@ViewBag.Status</h5>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.AutoEditView(Model)
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

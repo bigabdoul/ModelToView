@@ -1,0 +1,35 @@
+﻿@model AutoInputMetadataBag
+
+@{
+    var metadata = Model.Metadata;
+    var attr = metadata.Attribute;
+    var labelText = metadata.GetDisplayName();
+
+    if (Model.RenderOptions == null)
+    {
+        Model.RenderOptions = ControlRenderOptions.CreateDefault();
+    }
+
+    var options = Model.RenderOptions;
+
+    if (true == options?.GenerateIdAttribute)
+    {
+        options.UniqueId = metadata.PropertyInfo.Name.GenerateId(options.CamelCaseId);
+    }
+
+    if (attr.IsInputRadio || metadata.IsInputCheckbox)
+    {
+        <div class="form-group">
+            @if (labelText.IsNotWhiteSpace() && attr.IsInputRadio)
+            {
+                <label class="control-label">@labelText</label>
+            }
+            @metadata.Render(Model.ViewModel, options)
+            @*<AutoValidationMessage Model="metadata.Model" Property="@propertyName" />*@
+        </div>
+    }
+    else
+    {
+        @Html.Partial("_AutoInputGroupView", Model)
+    }
+}

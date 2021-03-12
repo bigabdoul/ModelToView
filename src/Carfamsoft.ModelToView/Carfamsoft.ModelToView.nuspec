@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Carfamsoft.ModelToView</id>
+    <version>1.2.0</version>
+    <title>Carfamsoft.ModelToView</title>
+    <authors>Abdourahamane Kaba</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0+</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0+</licenseUrl>
+    <projectUrl>https://github.com/bigabdoul/ModelToView</projectUrl>
+    <repository type="git" url="https://github.com/bigabdoul/ModelToView.git"/>
+    <releaseNotes>
+      - Huge refactoring and render output improvement.
+      - Source code now available on GitHub at:
+        https://github.com/bigabdoul/ModelToView
+      - Sample ASP.NET MVC project that demonstrates how to
+        easily do custom rendering using partial Razor Views.
+    </releaseNotes>
+    <description>Generates HTML form elements from a view model which can be used to create auto-generated, editable forms and other useful applications.</description>
+    <copyright>Copyright © 2021 - Karfamsoft</copyright>
+    <tags>object html elements generation rendering conversion web controls form</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Microsoft.AspNet.WebPages" version="3.2.7" exclude="Build,Analyzers"/>
+        <dependency id="System.ComponentModel.Annotations" version="5.0.0" exclude="Build,Analyzers"/>
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Carfamsoft.ModelToView.Shared" version="1.2.0" exclude="Build,Analyzers"/>
+        <dependency id="Carfamsoft.ModelToView.ViewAnnotations" version="1.2.0" exclude="Build,Analyzers"/>
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.xml"/>
+  </files>
+</package>

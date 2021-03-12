@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>A shared supporting library for model to view generation projects.</Description>
+    <Authors>Abdourahamane Kaba</Authors>
+    <Company>Karfamsoft</Company>
+    <Product>Carfamsoft.ModelToView.Shared</Product>
+    <Copyright>Copyright ©  2021 - Karfamsoft</Copyright>
+    <PackageLicenseExpression>Apache-2.0+</PackageLicenseExpression>
+    <Version>1.2.0</Version>
+    <PackageTags>automatic model view html form generation support</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>- Huge refactoring and render output improvement.
+- Source code now available on GitHub at:
+   https://github.com/bigabdoul/ModelToView
+- Sample ASP.NET MVC project that demonstrates how to
+   easily do custom rendering using partial Razor Views.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/bigabdoul/ModelToView</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bigabdoul/ModelToView.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\hp\source\repos\Carfamsoft.ModelToView\src\Carfamsoft.ModelToView.Shared\Carfamsoft.ModelToView.Shared.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

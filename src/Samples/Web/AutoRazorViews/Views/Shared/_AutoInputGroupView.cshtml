@@ -1,0 +1,144 @@
+﻿@model AutoInputMetadataBag
+
+@{
+    var options = Model.RenderOptions;
+    var uniqueId = options?.UniqueId;
+    var metadata = Model.Metadata;
+    var icon = metadata.Attribute.Icon;
+    var labelText = metadata.GetDisplayName();
+
+    switch (Model.LabelAlignment)
+    {
+        case ContentAlignment.Right:
+            <div class="form-group">
+                <div class="input-group">
+                    @metadata.Render(Model.ViewModel, options)
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            @if (icon.IsNotWhiteSpace())
+                            {
+                                <i class="@icon"></i><text>&nbsp;</text>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(labelText))
+                            {
+                                if (uniqueId.IsNotWhiteSpace())
+                                {
+                                    <label for="@uniqueId" class="control-label">@labelText</label>
+                                }
+                                else
+                                {
+                                    <label class="control-label">@labelText</label>
+                                }
+                            }
+                            else if (Model.LabelContent != null)
+                            {
+                                @Html.Raw(Model.LabelContent)
+                            }
+                        </span>
+                    </div>
+                </div>
+                @Html.Raw(Model.ValidationContent)
+            </div>
+            break;
+        case ContentAlignment.Bottom:
+            <div class="form-group">
+                <div class="input-group">
+                    @if (icon.IsNotWhiteSpace())
+                    {
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="@icon"></i>
+                            </span>
+                        </div>
+                    }
+                    @metadata.Render(Model.ViewModel, options)
+                    @Html.Raw(Model.ChildContent)
+                </div>
+                @if (labelText.IsNotWhiteSpace())
+                {
+                    if (uniqueId.IsNotWhiteSpace())
+                    {
+                        <label for="@uniqueId" class="control-label">@labelText</label>
+                    }
+                    else
+                    {
+                        <label class="control-label">@labelText</label>
+                    }
+                }
+                else if (Model.LabelContent != null)
+                {
+                    @Html.Raw(Model.LabelContent)
+                }
+                @Html.Raw(Model.ValidationContent)
+            </div>
+            break;
+        case ContentAlignment.Left:
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            @if (icon.IsNotWhiteSpace())
+                            {
+                                <i class="@icon"></i><text>&nbsp;</text>
+                            }
+                            @if (labelText.IsNotWhiteSpace())
+                            {
+                                if (uniqueId.IsNotWhiteSpace())
+                                {
+                                    <label for="@uniqueId" class="control-label">@labelText</label>
+                                }
+                                else
+                                {
+                                    <label class="control-label">@labelText</label>
+                                }
+                            }
+                            else if (Model.LabelContent != null)
+                            {
+                                @Html.Raw(Model.LabelContent)
+                            }
+                        </span>
+                    </div>
+                    @metadata.Render(Model.ViewModel, options)
+                    @Html.Raw(Model.ChildContent)
+                </div>
+                @Html.Raw(Model.ValidationContent)
+            </div>
+
+            break;
+        default:
+            <div class="form-group">
+                @if (Model.LabelAlignment == ContentAlignment.Top)
+                {
+                    if (!string.IsNullOrWhiteSpace(labelText))
+                    {
+                        if (uniqueId.IsNotWhiteSpace())
+                        {
+                            <label for="@uniqueId" class="control-label">@labelText</label>
+                        }
+                        else
+                        {
+                            <label class="control-label">@labelText</label>
+                        }
+                    }
+                    else if (Model.LabelContent != null)
+                    {
+                        @Html.Raw(Model.LabelContent)
+                    }
+                }
+                <div class="input-group">
+                    @if (icon.IsNotWhiteSpace())
+                    {
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="@icon"></i>
+                            </span>
+                        </div>
+                    }
+                    @metadata.Render(Model.ViewModel, options)
+                    @Html.Raw(Model.ChildContent)
+                </div>
+                @Html.Raw(Model.ValidationContent)
+            </div>
+            break;
+    }
+}

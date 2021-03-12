@@ -1,0 +1,22 @@
+﻿@model AddPhoneNumberViewModel
+@{
+    ViewBag.Title = "Phone Number";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Add a phone number</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.AutoEditView(Model)
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
