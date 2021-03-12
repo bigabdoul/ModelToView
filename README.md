@@ -28,8 +28,14 @@ They show you how to do custom view model rendering.
 `Install-Package Carfamsoft.ModelToView.Mvc`
 
 If you get errors like:
-`The type 'Type' is defined in an assembly that is not referenced. You must add a reference to assembly 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'`
-You may resolve this following this issue: https://github.com/dotnet/standard/issues/542
+- `The type 'Type' is defined in an assembly that is not referenced. You must add a reference to assembly 'netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'`
+You may resolve this problem by reading this issue: https://github.com/dotnet/standard/issues/542
+
+- `Could not find a part of the path '...\ModelToView\src\Samples\Web\AutoRazorViews\bin\roslyn\csc.exe'.` In Visual Studio you may resolve this error by going to the `Build` menu:
+  - Build > Clean Solution
+  - Build > Rebuild Solution
+
+Refresh your browser page with the error and it should all be fine again.
 
 ### An AngularJS sample
 
