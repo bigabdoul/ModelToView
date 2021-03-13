@@ -114,7 +114,7 @@ namespace Carfamsoft.ModelToView.WebPages
             else
             {
                 RenderElement(builder, elementName, elementType);
-            }
+            }            
 
             return builder;
         }
@@ -147,14 +147,12 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddAttributeIfNotBlank("title", data.GetDisplayString(attr.Description))
                 .AddAttributeIfNotBlank("placeholder", data.GetDisplayString(attr.Prompt))
                 .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", data.PropertyInfo.Name)
-                ;
+                .AddAttributeIf(data.IsRequired, "required");
 
             CheckDisabled(elementBuilder);
-
-            //if (_propertyType.IsString())
-            //    elementBuilder.AddAttribute("value", FormatValueAsString(Value));
-            //else
-                elementBuilder.AddAttribute("value", BindConverter.FormatValue(Metadata.PropertyInfo.PropertyType, Value)?.ToString());
+            
+            elementBuilder.AddAttributeIfNotBlank("value", 
+                BindConverter.FormatValue(data.PropertyInfo.PropertyType, Value)?.ToString());
 
             if (elementName.EqualNoCase("select"))
                 RenderSelectOptions(elementBuilder);
@@ -324,7 +322,8 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddAttribute("type", "checkbox")
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
                 .AddAttributeIfNotBlank("id", _inputId)
-                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name);
+                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name)
+                .AddAttributeIf(Metadata.IsRequired, "required");
 
             CheckDisabled(inputBuilder);
 
@@ -366,9 +365,10 @@ namespace Carfamsoft.ModelToView.WebPages
 
             var inputBuilder = NestedTagBuilder.Create("input")
                 .AddAttribute("type", "radio")
-                .AddAttribute("value", FormatValueAsString(value))
+                .AddAttributeIfNotBlank("value", FormatValueAsString(value))
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
-                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", propertyName);
+                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", propertyName)
+                .AddAttributeIf(Metadata.IsRequired, "required");
 
             CheckDisabled(inputBuilder);
 
@@ -400,7 +400,8 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
                 .AddAttribute("type", "file")
                 .AddAttributeIfNotBlank("id", _inputId)
-                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name);
+                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name)
+                .AddAttributeIf(Metadata.IsRequired, "required");
 
             if (_metadataAttribute.GetFileAttribute() != null)
                 AddInputFileAttributes(inputBuilder, _metadataAttribute.GetFileAttribute());

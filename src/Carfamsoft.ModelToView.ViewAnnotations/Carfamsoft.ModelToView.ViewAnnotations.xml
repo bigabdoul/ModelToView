@@ -63,6 +63,16 @@
             Gets the <see cref="T:Carfamsoft.ModelToView.ViewAnnotations.FormDisplayAttribute"/>.
             </summary>
         </member>
+        <member name="P:Carfamsoft.ModelToView.ViewAnnotations.AutoInputMetadata.Required">
+            <summary>
+            Gets the <see cref="T:System.ComponentModel.DataAnnotations.RequiredAttribute"/> custom attribute associated with this metadata.
+            </summary>
+        </member>
+        <member name="P:Carfamsoft.ModelToView.ViewAnnotations.AutoInputMetadata.IsRequired">
+            <summary>
+            Determines whether a value is required for the property associated with this metadata.
+            </summary>
+        </member>
         <member name="M:Carfamsoft.ModelToView.ViewAnnotations.AutoInputMetadata.ExtractOptions">
             <summary>
             When implemented, extracts a range of values from the custom attribute 
