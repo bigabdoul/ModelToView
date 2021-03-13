@@ -150,12 +150,20 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddAttributeIf(data.IsRequired, "required");
 
             CheckDisabled(elementBuilder);
-            
-            elementBuilder.AddAttributeIfNotBlank("value", 
-                BindConverter.FormatValue(data.PropertyInfo.PropertyType, Value)?.ToString());
 
-            if (elementName.EqualNoCase("select"))
-                RenderSelectOptions(elementBuilder);
+            var elementValue = BindConverter.FormatValue(data.PropertyInfo.PropertyType, Value)?.ToString();
+
+            if (elementName.EqualNoCase("textarea"))
+            {
+                elementBuilder.InnerHtml = elementValue;
+            }
+            else
+            {
+                elementBuilder.AddAttributeIfNotBlank("value", elementValue);
+            
+                if (elementName.EqualNoCase("select"))
+                    RenderSelectOptions(elementBuilder);
+            }
 
             builder.AddContent(elementBuilder.ToString());
         }
@@ -186,7 +194,7 @@ namespace Carfamsoft.ModelToView.WebPages
         /// <returns></returns>
         public virtual string GetElement(out string elementType)
         {
-            string element;
+            string element = null;
 
             elementType = _metadataAttribute.UITypeHint.IsWhiteSpace()
                 ? null
@@ -194,8 +202,6 @@ namespace Carfamsoft.ModelToView.WebPages
 
             if (_metadataAttribute.UIHint.IsNotWhiteSpace())
                 element = _metadataAttribute.UIHint;
-            else
-                element = "input";
 
             if (elementType == null)
             {
@@ -203,7 +209,14 @@ namespace Carfamsoft.ModelToView.WebPages
                 var dataType = pi.GetCustomAttribute<DataTypeAttribute>(true);
 
                 if (dataType != null)
+                {
                     elementType = dataType.GetControlType();
+                    if (element == null && dataType.DataType == DataType.MultilineText)
+                    {
+                        element = "textarea";
+                        elementType = null;
+                    }
+                }    
                 else if (pi.GetCustomAttribute<EmailAddressAttribute>(true) != null)
                     elementType = "email";
                 else
@@ -214,6 +227,9 @@ namespace Carfamsoft.ModelToView.WebPages
                 if (elementType.IsWhiteSpace() && SupportsInputDate())
                     elementType = "date";
             }
+
+            if (element == null)
+                element = "input";
 
             return element;
         }
