@@ -53,6 +53,9 @@
     <PackageReference Include="Microsoft.AspNet.Mvc">
       <Version>5.2.7</Version>
     </PackageReference>
+    <PackageReference Include="NETStandard.Library">
+      <Version>2.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Carfamsoft.ModelToView.Shared\Carfamsoft.ModelToView.Shared.csproj">
