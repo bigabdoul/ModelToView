@@ -504,6 +504,7 @@ namespace Carfamsoft.ModelToView.Shared
         /// <summary>
         /// Formats the provided <paramref name="value"/> as a <see cref="System.String"/>.
         /// </summary>
+        /// <param name="type">The type of the value to format.</param>
         /// <param name="value">The value to format.</param>
         /// <param name="culture">
         /// The <see cref="CultureInfo"/> to use while formatting. Defaults to <see cref="CultureInfo.CurrentCulture"/>.

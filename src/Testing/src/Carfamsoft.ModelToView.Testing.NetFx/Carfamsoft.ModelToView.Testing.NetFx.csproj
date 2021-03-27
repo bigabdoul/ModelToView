@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C72D5198-5FE9-446D-A3CB-F2C0E0C05DA2}</ProjectGuid>
+    <ProjectGuid>{800A5F17-EAA8-4AA5-80DF-294C68E6CF2E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Carfamsoft.ModelToView.Shared.NetFx</RootNamespace>
-    <AssemblyName>Carfamsoft.ModelToView.Shared.NetFx</AssemblyName>
+    <RootNamespace>Carfamsoft.ModelToView.Testing.NetFx</RootNamespace>
+    <AssemblyName>Carfamsoft.ModelToView.Testing.NetFx</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,10 +29,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Carfamsoft.ModelToView.Shared.NetFx.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,17 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindConverter.cs" />
-    <Compile Include="ContentAlignment.cs" />
-    <Compile Include="ControlRenderOptions.cs" />
-    <Compile Include="FormAttributes.cs" />
-    <Compile Include="HtmlTagInfo.cs" />
+    <Compile Include="AutoUpdateUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectOption.cs" />
-    <Compile Include="Extensions\SelectOptionExtensions.cs" />
-    <Compile Include="SelectOptionList.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="RegisterBusinessModel.cs" />
+    <Compile Include="RegisterModel.cs" />
+    <Compile Include="RegisterUserModel.cs" />
+    <Compile Include="Resources\DisplayStrings.Designer.cs" />
+    <Compile Include="UpdateUserModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DisplayStrings.fr.resx" />
+    <EmbeddedResource Include="Resources\DisplayStrings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Carfamsoft.ModelToView.ViewAnnotations.NetFx\Carfamsoft.ModelToView.ViewAnnotations.NetFx.csproj">
+      <Project>{f45bb6dc-168d-4c37-9859-84b387cab265}</Project>
+      <Name>Carfamsoft.ModelToView.ViewAnnotations.NetFx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

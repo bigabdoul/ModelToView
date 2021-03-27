@@ -78,9 +78,9 @@
       <Project>{439ee7b9-0301-4c51-9ba5-20a9c4c598e7}</Project>
       <Name>Carfamsoft.ModelToView</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Carfamsoft.ModelToView.Testing\Carfamsoft.ModelToView.Testing.csproj">
-      <Project>{2a0beb50-f7e3-4fc2-ba51-39942dd1c6b6}</Project>
-      <Name>Carfamsoft.ModelToView.Testing</Name>
+    <ProjectReference Include="..\..\src\Carfamsoft.ModelToView.Testing.NetFx\Carfamsoft.ModelToView.Testing.NetFx.csproj">
+      <Project>{800a5f17-eaa8-4aa5-80df-294c68e6cf2e}</Project>
+      <Name>Carfamsoft.ModelToView.Testing.NetFx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

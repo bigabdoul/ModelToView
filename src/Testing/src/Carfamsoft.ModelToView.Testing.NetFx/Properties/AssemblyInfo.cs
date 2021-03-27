@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Carfamsoft.ModelToView.Shared.NetFx")]
-[assembly: AssemblyDescription("A shared supporting library for model to view generation projects targeting .NET Framework 4.6.1.")]
+[assembly: AssemblyTitle("Carfamsoft.ModelToView.Testing.NetFx")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Karfamsoft")]
-[assembly: AssemblyProduct("Carfamsoft.ModelToView.Shared.NetFx")]
-[assembly: AssemblyCopyright("Copyright ©  2021 - Karfamsoft")]
-[assembly: AssemblyTrademark("Carfamsoft.ModelToView.Shared.NetFx")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Carfamsoft.ModelToView.Testing.NetFx")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c72d5198-5fe9-446d-a3cb-f2c0e0c05da2")]
+[assembly: Guid("800a5f17-eaa8-4aa5-80df-294c68e6cf2e")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.3.0.0")]
-[assembly: AssemblyFileVersion("1.3.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
