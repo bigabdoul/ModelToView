@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Resources;
 
-namespace Carfamsoft.ModelToView.Shared
+namespace Carfamsoft.ModelToView.Shared.Extensions
 {
     /// <summary>
     /// Provides extension methods for various types.

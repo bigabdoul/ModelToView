@@ -27,17 +27,10 @@
                     <div class="display-group-body @group.CssClass">
                         @foreach (var data in items)
                         {
-                            if (data.Attribute.Is("hidden"))
-                            {
-                                <input type="hidden" name="@data.PropertyInfo.Name" value="@data.GetValue(objVm)" />
-                            }
-                            else
-                            {
-                                Model.Metadata = data;
-                                <div class="@data.Attribute.ColumnCssClass">
-                                    @Html.Partial("_AutoInputView", Model)
-                                </div>
-                            }
+                            Model.Metadata = data;
+                            <div class="@data.Attribute.ColumnCssClass">
+                                @Html.Partial("_AutoInputView", Model)
+                            </div>
                         }
                     </div>
                 </fieldset>

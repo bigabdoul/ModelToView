@@ -1,5 +1,6 @@
 ﻿using Carfamsoft.ModelToView.Mvc;
 using Carfamsoft.ModelToView.Shared;
+using Carfamsoft.ModelToView.Shared.Extensions;
 using Carfamsoft.ModelToView.ViewAnnotations;
 using System;
 using System.Collections.Generic;
@@ -113,7 +114,7 @@ namespace Carfamsoft.ModelToView.WebPages
             else
             {
                 RenderElement(builder, elementName, elementType);
-            }
+            }            
 
             return builder;
         }
@@ -146,17 +147,23 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddAttributeIfNotBlank("title", data.GetDisplayString(attr.Description))
                 .AddAttributeIfNotBlank("placeholder", data.GetDisplayString(attr.Prompt))
                 .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", data.PropertyInfo.Name)
-                ;
+                .AddAttributeIf(data.IsRequired, "required");
 
             CheckDisabled(elementBuilder);
 
-            //if (_propertyType.IsString())
-            //    elementBuilder.AddAttribute("value", FormatValueAsString(Value));
-            //else
-                elementBuilder.AddAttribute("value", BindConverter.FormatValue(Metadata.PropertyInfo.PropertyType, Value)?.ToString());
+            var elementValue = BindConverter.FormatValue(data.PropertyInfo.PropertyType, Value)?.ToString();
 
-            if (elementName.EqualNoCase("select"))
-                RenderSelectOptions(elementBuilder);
+            if (elementName.EqualNoCase("textarea"))
+            {
+                elementBuilder.InnerHtml = elementValue;
+            }
+            else
+            {
+                elementBuilder.AddAttributeIfNotBlank("value", elementValue);
+            
+                if (elementName.EqualNoCase("select"))
+                    RenderSelectOptions(elementBuilder);
+            }
 
             builder.AddContent(elementBuilder.ToString());
         }
@@ -187,7 +194,7 @@ namespace Carfamsoft.ModelToView.WebPages
         /// <returns></returns>
         public virtual string GetElement(out string elementType)
         {
-            string element;
+            string element = null;
 
             elementType = _metadataAttribute.UITypeHint.IsWhiteSpace()
                 ? null
@@ -195,8 +202,6 @@ namespace Carfamsoft.ModelToView.WebPages
 
             if (_metadataAttribute.UIHint.IsNotWhiteSpace())
                 element = _metadataAttribute.UIHint;
-            else
-                element = "input";
 
             if (elementType == null)
             {
@@ -204,7 +209,14 @@ namespace Carfamsoft.ModelToView.WebPages
                 var dataType = pi.GetCustomAttribute<DataTypeAttribute>(true);
 
                 if (dataType != null)
+                {
                     elementType = dataType.GetControlType();
+                    if (element == null && dataType.DataType == DataType.MultilineText)
+                    {
+                        element = "textarea";
+                        elementType = null;
+                    }
+                }    
                 else if (pi.GetCustomAttribute<EmailAddressAttribute>(true) != null)
                     elementType = "email";
                 else
@@ -215,6 +227,9 @@ namespace Carfamsoft.ModelToView.WebPages
                 if (elementType.IsWhiteSpace() && SupportsInputDate())
                     elementType = "date";
             }
+
+            if (element == null)
+                element = "input";
 
             return element;
         }
@@ -323,7 +338,8 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddAttribute("type", "checkbox")
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
                 .AddAttributeIfNotBlank("id", _inputId)
-                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name);
+                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name)
+                .AddAttributeIf(Metadata.IsRequired, "required");
 
             CheckDisabled(inputBuilder);
 
@@ -365,9 +381,10 @@ namespace Carfamsoft.ModelToView.WebPages
 
             var inputBuilder = NestedTagBuilder.Create("input")
                 .AddAttribute("type", "radio")
-                .AddAttribute("value", FormatValueAsString(value))
+                .AddAttributeIfNotBlank("value", FormatValueAsString(value))
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
-                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", propertyName);
+                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", propertyName)
+                .AddAttributeIf(Metadata.IsRequired, "required");
 
             CheckDisabled(inputBuilder);
 
@@ -399,7 +416,8 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
                 .AddAttribute("type", "file")
                 .AddAttributeIfNotBlank("id", _inputId)
-                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name);
+                .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", Metadata.PropertyInfo.Name)
+                .AddAttributeIf(Metadata.IsRequired, "required");
 
             if (_metadataAttribute.GetFileAttribute() != null)
                 AddInputFileAttributes(inputBuilder, _metadataAttribute.GetFileAttribute());

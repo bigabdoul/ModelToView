@@ -26,4 +26,8 @@
     <DocumentationFile>C:\Users\hp\source\repos\Carfamsoft.ModelToView\src\Carfamsoft.ModelToView.Shared\Carfamsoft.ModelToView.Shared.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\Carfamsoft.ModelToView.Shared.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
