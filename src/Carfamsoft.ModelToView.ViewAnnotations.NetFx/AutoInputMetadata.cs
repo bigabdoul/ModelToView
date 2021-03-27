@@ -1,4 +1,5 @@
 ﻿using Carfamsoft.ModelToView.Shared;
+using Carfamsoft.ModelToView.Shared.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,8 @@ namespace Carfamsoft.ModelToView.ViewAnnotations
     {
         private readonly string _propertyName;
         private readonly ResourceManager _resourceManager;
+        private RequiredAttribute _requiredAttr;
+        private bool _requiredVisited;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutoInputMetadata"/> class using the specified parameters.
@@ -52,15 +55,13 @@ namespace Carfamsoft.ModelToView.ViewAnnotations
         /// The value of the resource localized for the specified culture, 
         /// or null if name cannot be found in a resource set.
         /// </returns>
-        public string GetDisplayString(string name, System.Globalization.CultureInfo culture = null) 
+        public string GetDisplayString(string name, System.Globalization.CultureInfo culture = null)
             => _resourceManager.GetDisplayString(name, culture);
 
         /// <summary>
         /// Indicates whether the input should be of type checkbox.
         /// </summary>
         public bool IsInputCheckbox => PropertyInfo.PropertyType.SupportsCheckbox(Attribute.UITypeHint);
-
-        #region private/internal
 
         /// <summary>
         /// Returns the property value of a specified object.
@@ -81,7 +82,30 @@ namespace Carfamsoft.ModelToView.ViewAnnotations
         /// Gets the <see cref="FormDisplayAttribute"/>.
         /// </summary>
         public FormDisplayAttribute Attribute { get; }
-        
+
+        /// <summary>
+        /// Gets the <see cref="RequiredAttribute"/> custom attribute associated with this metadata.
+        /// </summary>
+        public RequiredAttribute Required
+        {
+            get
+            {
+                if (!_requiredVisited && _requiredAttr == null)
+                {
+                    _requiredAttr = PropertyInfo.GetCustomAttribute<RequiredAttribute>(true);
+                    _requiredVisited = true;
+                }
+                return _requiredAttr;
+            }
+        }
+
+        /// <summary>
+        /// Determines whether a value is required for the property associated with this metadata.
+        /// </summary>
+        public bool IsRequired => Required != null;
+
+        #region private/internal
+
         /// <summary>
         /// When implemented, extracts a range of values from the custom attribute 
         /// 'RangeAttribute' using the <see cref="PropertyInfo"/> property.
@@ -113,8 +137,8 @@ namespace Carfamsoft.ModelToView.ViewAnnotations
             foreach (var kvp in values.ParseKeyValuePairs())
             {
                 list.Add(new SelectOption
-                { 
-                    Id = kvp.Key, 
+                {
+                    Id = kvp.Key,
                     Value = GetDisplayString(kvp.Key),
                 });
             }

@@ -1,5 +1,6 @@
 ﻿using Carfamsoft.ModelToView.Extensions;
 using Carfamsoft.ModelToView.Shared;
+using Carfamsoft.ModelToView.Shared.Extensions;
 using Carfamsoft.ModelToView.ViewAnnotations;
 using System;
 using System.Text;
