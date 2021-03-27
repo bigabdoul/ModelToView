@@ -70,13 +70,13 @@
       <Project>{018b63a5-c80f-4340-84f1-35671e773bf1}</Project>
       <Name>Carfamsoft.ModelToView.Mvc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Carfamsoft.ModelToView.Shared.NetFx\Carfamsoft.ModelToView.Shared.NetFx.csproj">
-      <Project>{c72d5198-5fe9-446d-a3cb-f2c0e0c05da2}</Project>
-      <Name>Carfamsoft.ModelToView.Shared.NetFx</Name>
+    <ProjectReference Include="..\..\..\Carfamsoft.ModelToView.Shared\Carfamsoft.ModelToView.Shared.csproj">
+      <Project>{37a7caa3-5377-4846-8044-134e10deb796}</Project>
+      <Name>Carfamsoft.ModelToView.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Carfamsoft.ModelToView.ViewAnnotations.NetFx\Carfamsoft.ModelToView.ViewAnnotations.NetFx.csproj">
-      <Project>{f45bb6dc-168d-4c37-9859-84b387cab265}</Project>
-      <Name>Carfamsoft.ModelToView.ViewAnnotations.NetFx</Name>
+    <ProjectReference Include="..\..\..\Carfamsoft.ModelToView.ViewAnnotations\Carfamsoft.ModelToView.ViewAnnotations.csproj">
+      <Project>{1158b2ac-2c8e-405c-a5ef-61b3fb41c3ca}</Project>
+      <Name>Carfamsoft.ModelToView.ViewAnnotations</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Carfamsoft.ModelToView\Carfamsoft.ModelToView.csproj">
       <Project>{439ee7b9-0301-4c51-9ba5-20a9c4c598e7}</Project>

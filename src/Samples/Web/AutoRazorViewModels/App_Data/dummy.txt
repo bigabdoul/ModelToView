@@ -1,1 +1,0 @@
-﻿This file ensures that the App_Data folder is created on github.
