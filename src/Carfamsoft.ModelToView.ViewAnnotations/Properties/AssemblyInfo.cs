@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Carfamsoft.ModelToView.ViewAnnotations.NetFx")]
+[assembly: AssemblyTitle("Carfamsoft.ModelToView.ViewAnnotations")]
 [assembly: AssemblyDescription("A supporting library for model to view rendering projects targeting .NET Framework 4.6.1.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Karfamsoft")]
-[assembly: AssemblyProduct("Carfamsoft.ModelToView.ViewAnnotations.NetFx")]
+[assembly: AssemblyProduct("Carfamsoft.ModelToView.ViewAnnotations")]
 [assembly: AssemblyCopyright("Copyright ©  2021 - Karfamsoft")]
-[assembly: AssemblyTrademark("Carfamsoft.ModelToView.ViewAnnotations.NetFx")]
+[assembly: AssemblyTrademark("Carfamsoft.ModelToView.ViewAnnotations")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

@@ -7,8 +7,8 @@
     <ProjectGuid>{800A5F17-EAA8-4AA5-80DF-294C68E6CF2E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Carfamsoft.ModelToView.Testing.NetFx</RootNamespace>
-    <AssemblyName>Carfamsoft.ModelToView.Testing.NetFx</AssemblyName>
+    <RootNamespace>Carfamsoft.ModelToView.Testing</RootNamespace>
+    <AssemblyName>Carfamsoft.ModelToView.Testing</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
