@@ -2,16 +2,17 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{018B63A5-C80F-4340-84F1-35671E773BF1}</ProjectGuid>
+    <ProjectGuid>{F45BB6DC-168D-4C37-9859-84B387CAB265}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Carfamsoft.ModelToView.Mvc</RootNamespace>
-    <AssemblyName>Carfamsoft.ModelToView.Mvc</AssemblyName>
+    <RootNamespace>Carfamsoft.ModelToView.ViewAnnotations.NetFx</RootNamespace>
+    <AssemblyName>Carfamsoft.ModelToView.ViewAnnotations.NetFx</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,7 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Carfamsoft.ModelToView.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,12 +31,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Carfamsoft.ModelToView.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,26 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="AttributeBag.cs" />
+    <Compile Include="AutoInputMetadata.cs" />
+    <Compile Include="CustomRenderMode.cs" />
+    <Compile Include="DisplayHintAttribute.cs" />
+    <Compile Include="DisplayIgnoreAttribute.cs" />
+    <Compile Include="DisplayResourceAttribute.cs" />
+    <Compile Include="DragDropAttribute.cs" />
+    <Compile Include="FileCapableAttributeBase.cs" />
+    <Compile Include="FileReaderMethod.cs" />
+    <Compile Include="FormAttributeBase.cs" />
+    <Compile Include="FormDisplayAttribute.cs" />
+    <Compile Include="FormDisplayDefaultAttribute.cs" />
+    <Compile Include="FormDisplayGroupMetadata.cs" />
+    <Compile Include="ImagePreviewAttribute.cs" />
+    <Compile Include="InputFileAttribute.cs" />
+    <Compile Include="MetadataExtensions.cs" />
+    <Compile Include="ObjectDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.Mvc">
-      <Version>5.2.7</Version>
-    </PackageReference>
+    <Compile Include="RangeAttributeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Carfamsoft.ModelToView.Shared.NetFx\Carfamsoft.ModelToView.Shared.NetFx.csproj">
       <Project>{c72d5198-5fe9-446d-a3cb-f2c0e0c05da2}</Project>
       <Name>Carfamsoft.ModelToView.Shared.NetFx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Carfamsoft.ModelToView.ViewAnnotations.NetFx\Carfamsoft.ModelToView.ViewAnnotations.NetFx.csproj">
-      <Project>{f45bb6dc-168d-4c37-9859-84b387cab265}</Project>
-      <Name>Carfamsoft.ModelToView.ViewAnnotations.NetFx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Carfamsoft.ModelToView\Carfamsoft.ModelToView.csproj">
-      <Project>{439ee7b9-0301-4c51-9ba5-20a9c4c598e7}</Project>
-      <Name>Carfamsoft.ModelToView</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
