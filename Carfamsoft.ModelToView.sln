@@ -9,13 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.Mvc"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.Testing.Tests", "src\Testing\test\Carfamsoft.ModelToView.Testing.Tests\Carfamsoft.ModelToView.Testing.Tests.csproj", "{37E1EE46-0D25-47F5-A55D-8F88DB6353C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.Shared.NetFx", "src\Carfamsoft.ModelToView.Shared.NetFx\Carfamsoft.ModelToView.Shared.NetFx.csproj", "{C72D5198-5FE9-446D-A3CB-F2C0E0C05DA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.Shared", "src\Carfamsoft.ModelToView.Shared\Carfamsoft.ModelToView.Shared.csproj", "{C72D5198-5FE9-446D-A3CB-F2C0E0C05DA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.ViewAnnotations.NetFx", "src\Carfamsoft.ModelToView.ViewAnnotations.NetFx\Carfamsoft.ModelToView.ViewAnnotations.NetFx.csproj", "{F45BB6DC-168D-4C37-9859-84B387CAB265}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.ViewAnnotations", "src\Carfamsoft.ModelToView.ViewAnnotations\Carfamsoft.ModelToView.ViewAnnotations.csproj", "{F45BB6DC-168D-4C37-9859-84B387CAB265}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRazorViewModels", "src\Samples\Web\AutoRazorViewModels\AutoRazorViewModels.csproj", "{78E14D6B-14F9-4EB9-9F5E-8D8FD00CFC7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.Testing.NetFx", "src\Testing\src\Carfamsoft.ModelToView.Testing.NetFx\Carfamsoft.ModelToView.Testing.NetFx.csproj", "{800A5F17-EAA8-4AA5-80DF-294C68E6CF2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carfamsoft.ModelToView.Testing", "src\Testing\src\Carfamsoft.ModelToView.Testing\Carfamsoft.ModelToView.Testing.csproj", "{800A5F17-EAA8-4AA5-80DF-294C68E6CF2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

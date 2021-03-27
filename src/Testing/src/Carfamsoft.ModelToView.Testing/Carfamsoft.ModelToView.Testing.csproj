@@ -4,16 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F45BB6DC-168D-4C37-9859-84B387CAB265}</ProjectGuid>
+    <ProjectGuid>{800A5F17-EAA8-4AA5-80DF-294C68E6CF2E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Carfamsoft.ModelToView.ViewAnnotations.NetFx</RootNamespace>
-    <AssemblyName>Carfamsoft.ModelToView.ViewAnnotations.NetFx</AssemblyName>
+    <RootNamespace>Carfamsoft.ModelToView.Testing.NetFx</RootNamespace>
+    <AssemblyName>Carfamsoft.ModelToView.Testing.NetFx</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +29,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Carfamsoft.ModelToView.ViewAnnotations.NetFx.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,30 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttributeBag.cs" />
-    <Compile Include="AutoInputMetadata.cs" />
-    <Compile Include="CustomRenderMode.cs" />
-    <Compile Include="DisplayHintAttribute.cs" />
-    <Compile Include="DisplayIgnoreAttribute.cs" />
-    <Compile Include="DisplayResourceAttribute.cs" />
-    <Compile Include="DragDropAttribute.cs" />
-    <Compile Include="FileCapableAttributeBase.cs" />
-    <Compile Include="FileReaderMethod.cs" />
-    <Compile Include="FormAttributeBase.cs" />
-    <Compile Include="FormDisplayAttribute.cs" />
-    <Compile Include="FormDisplayDefaultAttribute.cs" />
-    <Compile Include="FormDisplayGroupMetadata.cs" />
-    <Compile Include="ImagePreviewAttribute.cs" />
-    <Compile Include="InputFileAttribute.cs" />
-    <Compile Include="MetadataExtensions.cs" />
-    <Compile Include="ObjectDictionary.cs" />
+    <Compile Include="AutoUpdateUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RangeAttributeExtensions.cs" />
+    <Compile Include="RegisterBusinessModel.cs" />
+    <Compile Include="RegisterModel.cs" />
+    <Compile Include="RegisterUserModel.cs" />
+    <Compile Include="Resources\DisplayStrings.Designer.cs" />
+    <Compile Include="UpdateUserModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Carfamsoft.ModelToView.Shared.NetFx\Carfamsoft.ModelToView.Shared.NetFx.csproj">
-      <Project>{c72d5198-5fe9-446d-a3cb-f2c0e0c05da2}</Project>
-      <Name>Carfamsoft.ModelToView.Shared.NetFx</Name>
+    <EmbeddedResource Include="Resources\DisplayStrings.fr.resx" />
+    <EmbeddedResource Include="Resources\DisplayStrings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Carfamsoft.ModelToView.ViewAnnotations\Carfamsoft.ModelToView.ViewAnnotations.csproj">
+      <Project>{f45bb6dc-168d-4c37-9859-84b387cab265}</Project>
+      <Name>Carfamsoft.ModelToView.ViewAnnotations</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
