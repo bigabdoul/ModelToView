@@ -49,7 +49,11 @@ namespace Carfamsoft.ModelToView.WebPages
 
             _propertyType = propertyInfo.PropertyType;
             _nullableUnderlyingType = Nullable.GetUnderlyingType(_propertyType);
-            _inputId = _renderOptions?.GenerateIdAttribute ?? true ? (_renderOptions?.UniqueId ?? propertyInfo.Name.GenerateId()) : null;
+            _inputId = _renderOptions?.GenerateIdAttribute ?? true || 
+                _metadataAttribute.IsInputCheckboxOrRadio || 
+                metadata.IsInputCheckbox 
+                ? (_renderOptions?.UniqueId ?? propertyInfo.Name.GenerateId()) 
+                : null;
 
             CheckIfInputNumber();
             InitCultureAndFormat();
@@ -297,6 +301,7 @@ namespace Carfamsoft.ModelToView.WebPages
             if (options?.Any() == true)
             {
                 var customRadio = _metadataAttribute.CustomRenderMode == CustomRenderMode.Enabled;
+                int index = 1;
 
                 foreach (var item in options)
                 {
@@ -307,7 +312,8 @@ namespace Carfamsoft.ModelToView.WebPages
                             /* radio */ true,
                             /* label */ item.Value,
                             /* name */ propertyName,
-                            /* value */ item.Id);
+                            /* value */ item.Id,
+                            index++);
                     }
                     else
                     {
@@ -316,7 +322,8 @@ namespace Carfamsoft.ModelToView.WebPages
                             /* propertyName */ propertyName,
                             /* value */ item.Id,
                             /* additionalCssClass */ null,
-                            /* label */ item.Value);
+                            /* label */ item.Value,
+                            index++);
                     }
                 }
             }
@@ -356,7 +363,7 @@ namespace Carfamsoft.ModelToView.WebPages
             }
             else
             {
-                builder.AddContent(inputBuilder.ToString());
+                builder.AddChild(inputBuilder);
             }
         }
 
@@ -368,7 +375,8 @@ namespace Carfamsoft.ModelToView.WebPages
         /// <param name="value">The value of the radio input.</param>
         /// <param name="additionalCssClass">The custom CSS class to add to the existing <see cref="CssClass"/>.</param>
         /// <param name="label">The text of the associated label. Should be null if you already wrapped the input inside a label.</param>
-        public virtual void RenderInputRadio(NestedTagBuilder builder, string propertyName, object value, string additionalCssClass = null, string label = null)
+        /// <param name="index">A descriminating number to append to the input identifier.</param>
+        public virtual void RenderInputRadio(NestedTagBuilder builder, string propertyName, object value, string additionalCssClass = null, string label = null, int? index = null)
         {
             /*
             <label>
@@ -384,7 +392,8 @@ namespace Carfamsoft.ModelToView.WebPages
                 .AddAttributeIfNotBlank("value", FormatValueAsString(value))
                 .AddClass($"{additionalCssClass} {CssClass}".Trim())
                 .AddAttributeIf(_renderOptions?.GenerateNameAttribute ?? true, "name", propertyName)
-                .AddAttributeIf(Metadata.IsRequired, "required");
+                .AddAttributeIf(Metadata.IsRequired, "required")
+                .AddAttributeIfNotBlank("id", GetUniqueInputId(index));
 
             CheckDisabled(inputBuilder);
 
@@ -402,6 +411,20 @@ namespace Carfamsoft.ModelToView.WebPages
             {
                 builder.AddChild(inputBuilder);
             }
+        }
+
+        private string GetUniqueInputId(int? index)
+        {
+            if (_inputId.IsNotWhiteSpace())
+            {
+                var uniqueId = _inputId;
+
+                if (index.HasValue)
+                    uniqueId += $"{index}";
+
+                return uniqueId;
+            }
+            return null;
         }
 
         /// <summary>
@@ -475,36 +498,37 @@ namespace Carfamsoft.ModelToView.WebPages
         /// <param name="label">The label text.</param>
         /// <param name="name">The name of the input radio.</param>
         /// <param name="value">The value of the radio input.</param>
-        public virtual void RenderCustomFormCheck(NestedTagBuilder builder, bool radio, string label, string name = null, string value = null)
+        /// <param name="index">A descriminating number to append to the input identifier.</param>
+        public virtual void RenderCustomFormCheck(NestedTagBuilder builder, bool radio, string label, string name = null, string value = null, int? index = null)
         {
             /* This is a variation of what we're building:
             <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="@propertyName" value="@item.Id" @onchange="HandleChange" checked="@IsChecked" />
-                    @item.Value
-                </label>
+                <input type="radio" class="form-check-input" name="@propertyName" value="@item.Id" @onchange="HandleChange" checked="@IsChecked" />
+                <label class="form-check-label">@item.Value</label>
             </div>
             */
             const string FORM_CHECK_INPUT = "form-check-input";
 
             var div = NestedTagBuilder.Create("div").AddClass("form-check");
-            var ntbLabel = NestedTagBuilder.Create("label").AddClass("form-check-label");
+            var ntbLabel = NestedTagBuilder.Create("label").AddClass("form-check-label")
+                .AddAttributeIfNotBlank("for", GetUniqueInputId(index));
 
             if (radio)
             {
                 RenderInputRadio(
-                    /* builder */ ntbLabel,
+                    /* builder */ div,
                     /* propertyName */ name,
                     /* value */ value,
                     /* additionalCssClass */ FORM_CHECK_INPUT,
-                    /* label */ null);
+                    /* label */ null,
+                    index);
 
                 ntbLabel.AddChild(NestedTagBuilder.Create("span").SetInnerHtml(label));
             }
             else
             {
                 RenderInputCheckbox(
-                    /* builder */ntbLabel,
+                    /* builder */div,
                     /* additionalCssClass */ FORM_CHECK_INPUT,
                     /* label */ null);
 
