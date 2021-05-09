@@ -139,7 +139,7 @@ namespace Carfamsoft.ModelToView.ViewAnnotations
                 list.Add(new SelectOption
                 {
                     Id = kvp.Key,
-                    Value = GetDisplayString(kvp.Key),
+                    Value = GetDisplayString(kvp.Value),
                 });
             }
 
